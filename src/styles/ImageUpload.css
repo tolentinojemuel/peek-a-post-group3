@@ -1,0 +1,93 @@
+.imageUpload {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+}
+.top-layout {
+  display: flex;
+  flex-direction: column;
+}
+.progress {
+  width: 100%;
+}
+
+.text-area {
+  padding-top: 25px;
+  border: none;
+  width: 100%;
+  font-size: 14px;
+}
+.text-area:focus {
+  outline: none;
+}
+
+.bottom-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bottom-layout .imageUpload_button {
+  color: white;
+  background-color: #4183d7;
+}
+.bottom-layout .imageUpload_button:hover {
+  background-color: darkblue;
+}
+
+.imageUpload .fileUpload {
+  font-size: 12px;
+  background: lightgray;
+  border-radius: 40px;
+  max-height: 50px;
+  width: 200px;
+  outline: none;
+}
+::-webkit-file-upload-button {
+  color: white;
+  background: #4183d7;
+  padding: 20px;
+  border: none;
+  border-radius: 50px;
+  outline: none;
+}
+::-webkit-file-upload-button:hover {
+  background: darkblue;
+}
+.progress {
+  height: 22px;
+}
+.progress-bar {
+  padding-top: 25px;
+}
+
+.floating-btn {
+  max-width: 80px;
+  width: 80px;
+  height: 80px;
+  background: #4183d7;
+  display: flex;
+  border-radius: 50%;
+  color: white;
+  font-size: 40px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  box-shadow: 4px 4px 5px gray;
+  position: fixed;
+  right: 6px;
+  bottom: 20px;
+  transition: 0.25s;
+  outline: blue;
+  cursor: pointer;
+}
+.floating-btn:active {
+  background: darkblue;
+  right: 6px;
+}
+.floating-btn:hover {
+  background: darkblue;
+}
