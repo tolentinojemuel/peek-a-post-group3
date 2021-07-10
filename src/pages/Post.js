@@ -127,7 +127,7 @@ export default function Post({ postId, email, caption, imageUrl }) {
           <input
             className="postInput"
             type="text"
-            placeholder="Comment your thoughts..."
+            placeholder="Comment your thoughts...."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
