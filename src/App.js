@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -62,6 +63,12 @@ function App() {
                 path="/home"
                 exact
                 component={Home}
+                isAuth={values.isAuth}
+              />
+              <PrivateRoute
+                path="/profile"
+                exact
+                component={Profile}
                 isAuth={values.isAuth}
               />
               

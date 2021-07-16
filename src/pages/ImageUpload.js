@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { storage, db } from "../utils/firebase";
+import { storage, db, auth } from "../utils/firebase";
 import firebase from "firebase";
 import "../styles/ImageUpload.css";
 
@@ -35,8 +35,8 @@ export default function ImageUpload({ email }) {
   const classes = useStyles();
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
-
   const [caption, setCaption] = useState("");
+  const currentUser = auth.currentUser;
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -45,6 +45,7 @@ export default function ImageUpload({ email }) {
   };
 
   const handleUpload = (e) => {
+    e.preventDefault();
     if (image === null) {
       alert("choose image to upload");
     } else {
@@ -73,7 +74,7 @@ export default function ImageUpload({ email }) {
                 caption: caption,
                 imageUrl: url,
                 email: email,
- 
+                uid: currentUser.uid,
               });
             });
           setProgress(0);
@@ -86,7 +87,6 @@ export default function ImageUpload({ email }) {
   };
 
   const addPost = (e) => {
-    e.preventDefault();
     setModalUpload(true);
   };
 

@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
 import "../styles/Login-signup.css";
 
 function Signup() {
   const [user, setUser] = useState(null);
-  const [username, setUsername] = useState("");
   const [payload, setPayload] = useState({
     email: "",
     password: "",
     confirmPass: "",
+    firstname: "",
+    lastname: "",
   });
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+    auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         //user has logged in
         console.log(authUser);
@@ -22,11 +24,6 @@ function Signup() {
         setUser(null);
       }
     });
-
-    return () => {
-      // perform clean up actions
-      unsubscribe();
-    };
   }, [user, username]);
 
   const handleChange = (prop) => (e) => {
@@ -42,10 +39,23 @@ function Signup() {
     } else {
       auth
         .createUserWithEmailAndPassword(payload.email, payload.password)
-        .then((authUser) => {
-          return authUser.user.updateProfile({
-            displayName: username,
-          });
+        .then((auth) => {
+          if (auth.user) {
+            auth.user
+              .updateProfile({
+                displayName: username,
+              })
+              .then((s) => {
+                db.collection("users")
+                  .doc(auth.user.uid)
+                  .set({
+                    uid: auth.user.uid,
+                    fullname: payload.firstname + " " + payload.lastname,
+                    displayName: auth.user.displayName,
+                    email: auth.user.email,
+                  });
+              });
+          }
         })
         .catch((error) => alert(error.message));
 
@@ -56,6 +66,18 @@ function Signup() {
     <div className="signup-body">
       <div className="signup-wrap">
         <h2>Signup form</h2>
+        <input
+          type="text"
+          value={payload.firstname}
+          onChange={handleChange("firstname")}
+          placeholder="Enter your First name"
+        />
+        <input
+          type="text"
+          value={payload.lastname}
+          onChange={handleChange("lastname")}
+          placeholder="Enter your Last name"
+        />
         <input
           type="text"
           value={username}

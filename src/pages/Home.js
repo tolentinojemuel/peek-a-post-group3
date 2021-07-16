@@ -8,23 +8,29 @@ import Loading from "./Loading";
 import Nav from "./Nav";
 
 function Home() {
-  const [userLogin, setUserLogin] = useState("");
+  const [userLogin, setUserLogin] = useState([]);
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    var user = auth.currentUser;
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //user has logged in
+        console.log(authUser);
+        setUserLogin(authUser);
+        setIsLoading(false);
+      } else {
+        //user is logged out
+        setUserLogin(null);
+        setIsLoading(true);
+      }
+    });
 
-    if (user) {
-      // User is signed in.
-      setUserLogin(user);
-      setIsLoading(false);
-    } else {
-      // No user is signed in.
-      setUserLogin(null);
-      setIsLoading(true);
-    }
-  }, []);
+    return () => {
+      // perform clean up actions
+      unsubscribe();
+    };
+  }, [userLogin]);
 
   useEffect(() => {
     db.collection("posts")
@@ -41,7 +47,7 @@ function Home() {
   }, []);
 
   if (isLoading) {
-    return <Loading />
+    return <Loading />;
   } else {
     return (
       <div>
@@ -49,7 +55,6 @@ function Home() {
         <div className="nav-bar">
           <Nav />
         </div>
-        
 
         <div className="homePostContain">
           {posts.map(({ id, post }) => (
