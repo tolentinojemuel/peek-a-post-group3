@@ -39,18 +39,18 @@ export default function Nav({ user }) {
           <ul>
             <li>
               <Link to="/" className="a-link">
-                <i class="fa fa-home" id="nav-icon" title="Home"></i>
+                <i className="fa fa-home" id="nav-icon" title="Home"></i>
               </Link>
             </li>
             <li>
               <Link to="/profile" className="a-link">
-              <i class="fas fa-user-alt" id="nav-icon" title="Profile"></i>
+              <i className="fa fa-user" id="nav-icon" title="Profile"></i>
               </Link>
             </li>
             <li>
               <div className="a-link">
                 <button  onClick={() => auth.signOut()} id="logout-button">
-                <i class="fa fa-power-off"id="power-icon" title="Logout"></i>
+                <i className="fa fa-power-off"id="power-icon" title="Logout"></i>
                 </button>
               </div>
             </li>
