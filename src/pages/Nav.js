@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../utils/firebase";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../styles/Nav.css";
 
@@ -37,18 +37,31 @@ export default function Nav({ user }) {
 
       <div className="button-left">
         <div className="links">
-        <ul>
-          <li>
-            <Link  to="/" className="a-link">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile" className="a-link">Profile</Link>
-          </li>
-        </ul>
-        <div className="logoutButton-container">
-        <Button onClick={() => auth.signOut()} className="logout-button">Logout</Button>
+          <ul>
+            <li>
+              <Link to="/" className="a-link">
+                <i class="fa fa-home" id="nav-icon" title="Home"></i>
+              </Link>
+            </li>
+            <li>
+              <Link to="/profile" className="a-link">
+              <i class="fas fa-user-alt" id="nav-icon" title="Profile"></i>
+              </Link>
+            </li>
+            <li>
+              <div className="a-link">
+                <button  onClick={() => auth.signOut()} id="logout-button">
+                <i class="fa fa-power-off"id="power-icon" title="Logout"></i>
+                </button>
+              </div>
+            </li>
+          </ul>
+          {/* <div className="logoutButton-container">
+            <Button onClick={() => auth.signOut()} className="a-link">
+              Logout
+            </Button>
+          </div> */}
         </div>
-      </div>
       </div>
     </nav>
   );

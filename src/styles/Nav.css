@@ -55,24 +55,36 @@
 .links{
   display: flex;
   align-items: center;
+  padding:7px;
 }
 
-.links li:hover {
-  background-color: darkblue;
-
+.a-link{
+  background-color: none; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
 }
-
-
-.logoutButton-container .logout-button {
+.a-link #nav-icon{
+  font-size: 22px;
+}
+.a-link #logout-button {
   outline: none;
   color: white;
   cursor: pointer;
+  background:none;
+  border:none;
+  text-decoration: none;
   
 }
-.logoutButton-container .logout-button:hover {
-  background: darkblue;
-  border-radius: none;
-  height: 50px;
+
+#power-icon{
+  font-size: 21px;
+}
+
+.a-link:hover{
+  background:darkblue;
 }
 
 

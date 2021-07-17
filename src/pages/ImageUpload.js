@@ -92,7 +92,7 @@ export default function ImageUpload({ email }) {
 
   return (
     <div>
-      <button onClick={addPost} className="material-icons floating-btn">
+      <button onClick={addPost} className="material-icons floating-btn" title="Create Post">
         add
       </button>
 
