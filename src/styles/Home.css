@@ -12,7 +12,6 @@
 }
 
 .nav-bar .active{
-    /* background-color:  #467591; */
     position:sticky;
     top: 0;
     z-index: 1;

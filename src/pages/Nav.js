@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { auth } from "../utils/firebase";
-// import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import "../styles/Nav.css";
 
@@ -56,11 +55,6 @@ export default function Nav({ user }) {
               </div>
             </li>
           </ul>
-          {/* <div className="logoutButton-container">
-            <Button onClick={() => auth.signOut()} className="a-link">
-              Logout
-            </Button>
-          </div> */}
         </div>
       </div>
     </nav>

@@ -59,12 +59,12 @@
 }
 
 .a-link{
-  background-color: none; /* Blue background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 12px 16px; /* Some padding */
-  font-size: 16px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
+  background-color: none; 
+  border: none; 
+  color: white; 
+  padding: 12px 16px; 
+  font-size: 16px;
+  cursor: pointer; 
 }
 .a-link #nav-icon{
   font-size: 22px;
@@ -95,8 +95,8 @@
       align-items: flex-start;
   }
   .homeHeader .logoImage {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     position: relative;
     padding: 0;
     object-fit: contain;

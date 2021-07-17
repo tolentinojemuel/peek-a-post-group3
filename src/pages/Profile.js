@@ -54,12 +54,6 @@ export default function Profile() {
               <img src="./images/avatar.png" alt="avatar"/>
             </div>
           </div>
-          <div className="icon arrow">
-            <i className="fas fa-arrow-left"></i>
-          </div>
-          <div className="icon dots">
-            <i className="fas fa-ellipsis-v"></i>
-          </div>
           <div className="name">
             {userProfile.user.map((data) => (
               <h1>{data.fullname}</h1>
